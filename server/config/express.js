@@ -26,7 +26,9 @@ module.exports.init = function() {
   });
 
   /* serve static files */
-  app.use(express.static('public'));
+  app.get('/', function(req, res) {
+    app.use('/static', express.static(path.join(_dirname, 'public')));
+  });
 
   /* use the listings router for requests to the api */
 
